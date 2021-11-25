@@ -11,7 +11,7 @@
 template<class T>
 class myVector {
 public:
-    explicit myVector(int capacity = 0) {
+    myVector(int capacity = 0) {
         cout << "Constuctor myVector()" << endl;
         this->size = 0;
         this->capacity = capacity;
@@ -138,8 +138,8 @@ public:
     }
 
 private:
-    int size;
-    int capacity;
+    int size{};
+    int capacity{};
     T* data;
 };
 

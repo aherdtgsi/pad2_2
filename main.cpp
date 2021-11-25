@@ -63,21 +63,21 @@ catch(...){
     cout << "unknown error";
 }
 */
+/*
 #include "myVector.hpp"
-
 int main ()try{
     myVector<int> v(0);
     v.print();
     for (int i = 0; i < 10; i++) {
         v.push_back(i);
     }
-    /*
+
     v.print();
     v.resize(20,0);
     v.print();
     v.resize(5,0);
     v.print();
-    */
+
     myVector<int> a = v;
     v.print();
     a.print();
@@ -85,4 +85,33 @@ int main ()try{
 }
 catch (...){
     cout << "unknown error";
+}
+*/
+
+#include "Tracer.hpp"
+int main ()try{
+    Tracer<int> a(10);
+    cout << a.getCounter() << endl;
+    Tracer<int>b = a;
+    cout << a.getCounter() << endl;
+    cout << b.getCounter() << endl;
+    Tracer<string> d("asdfasdf");
+    //2 Tracer<int> objects
+    cout << b.getCounter() << endl;
+    //1 Tracer<String> object
+    cout << d.getCounter() << endl;
+    cout << d.getValue() << endl;
+    if(true){
+        Tracer<string> f = d;
+        //2 Tracer<String> objects
+        cout << d.getCounter() << endl;
+    }
+    //1 Tracer<String> object
+    cout << d.getCounter() << endl;
+    cout << a.getCounter() << endl;
+
+
+}
+catch(...) {
+    cout << "unknown error" << endl;
 }
