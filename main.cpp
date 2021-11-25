@@ -1,9 +1,9 @@
 #include <iostream>
 #include "parkhaus.h"
-#include "iostream"
 using std::cout;
 using std::cin;
 using std::endl;
+
 
 int main() try{
     parkhaus a;
@@ -57,8 +57,6 @@ int main() try{
         catch(logic_error &err){
             cout << err.what() << endl;
         }
-    a.belegen();
-    a.print();
     return 0;
 }
 catch(...){

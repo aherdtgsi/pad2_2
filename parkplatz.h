@@ -10,7 +10,7 @@ using std::exception;
 
 class parkplatz {
 public:
-    parkplatz(unsigned int id);
+    explicit parkplatz(unsigned int id);
     void belegen();
     void freigeben();
     void dauerparkplatz_belegen(string parkplatz_name);
@@ -20,14 +20,14 @@ public:
     bool isIstDauerparkplatz() const;
     void setIstDauerparkplatz(bool istDauerparkplatz);
     unsigned int getId() const;
-    void setId(unsigned int id);
+    void setId(unsigned int id_input);
     const string &getName() const;
-    void setName(const string &name);
+    void setName(const string &name_input);
 
 private:
-    bool ist_belegt;
-    bool ist_dauerparkplatz;
-    unsigned int id;
+    bool ist_belegt{};
+    bool ist_dauerparkplatz{};
+    unsigned int id{};
     std::string name;
 
 };

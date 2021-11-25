@@ -14,6 +14,7 @@ parkplatz::parkplatz(unsigned int id) {
     this->setIstBelegt(false);
     this->setId(id);
     this->setName("");
+
 }
 
 bool parkplatz::isIstBelegt() const {
@@ -36,16 +37,16 @@ unsigned int parkplatz::getId() const {
     return id;
 }
 
-void parkplatz::setId(unsigned int id) {
-    parkplatz::id = id;
+void parkplatz::setId(unsigned int id_input) {
+    parkplatz::id = id_input;
 }
 
 const string &parkplatz::getName() const {
     return name;
 }
 
-void parkplatz::setName(const string &name) {
-    parkplatz::name = name;
+void parkplatz::setName(const string &name_input) {
+    parkplatz::name = name_input;
 }
 
 void parkplatz::belegen() {
