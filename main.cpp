@@ -4,7 +4,7 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-
+/*
 int main() try{
     parkhaus a;
     a.print();
@@ -60,5 +60,29 @@ int main() try{
     return 0;
 }
 catch(...){
+    cout << "unknown error";
+}
+*/
+#include "myVector.hpp"
+
+int main ()try{
+    myVector<int> v(0);
+    v.print();
+    for (int i = 0; i < 10; i++) {
+        v.push_back(i);
+    }
+    /*
+    v.print();
+    v.resize(20,0);
+    v.print();
+    v.resize(5,0);
+    v.print();
+    */
+    myVector<int> a = v;
+    v.print();
+    a.print();
+
+}
+catch (...){
     cout << "unknown error";
 }

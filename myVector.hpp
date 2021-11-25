@@ -8,20 +8,22 @@
 #include <stdexcept>
 
 
-template<class T, int N>
+template<class T>
 class myVector {
 public:
-    explicit myVector(int size = 0) {
-        this->size = size;
-        this->capacity = size;
-        this->data = new T[size];
+    explicit myVector(int capacity = 0) {
+        cout << "Constuctor myVector()" << endl;
+        this->size = 0;
+        this->capacity = capacity;
+        this->data = new T[capacity];
     }
 
     myVector(const myVector& other) {
+        cout << "CopyConstuctor myVector()" << endl;
         this->size = other.size;
         this->capacity = other.capacity;
-        this->data = new T[capacity];
-        for (int i = 0; i < size; i++) {
+        this->data = new T[this->capacity];
+        for (int i = 0; i < this->capacity; i++) {
             this->data[i] = other.data[i];
         }
     }
@@ -31,8 +33,8 @@ public:
             delete[] this->data;
             this->size = other.size;
             this->capacity = other.capacity;
-            this->data = new T[capacity];
-            for (int i = 0; i < size; i++) {
+            this->data = new T[this->capacity];
+            for (int i = 0; i < this->capacity; i++) {
                 this->data[i] = other.data[i];
             }
         }
@@ -40,6 +42,7 @@ public:
     }
 
     ~myVector() {
+        cout << "Destructor myVector()" << endl;
         delete[] this->data;
     }
 
@@ -52,7 +55,7 @@ public:
     }
 
     T& operator[](int index) {
-        if (index >= 0 && index < size) {
+        if (index >= 0 && index < this->size) {
             return this->data[index];
         } else {
             throw std::out_of_range("Index out of range");
@@ -60,7 +63,7 @@ public:
     }
 
     T& at(int index) {
-        if (index >= 0 && index < size) {
+        if (index >= 0 && index < this->size) {
             return this->data[index];
         } else {
             throw std::out_of_range("Index out of range");
@@ -68,7 +71,7 @@ public:
     }
 
     const T& operator[](int index) const {
-        if (index >= 0 && index < size) {
+        if (index >= 0 && index < this->size) {
             return this->data[index];
         } else {
             throw std::out_of_range("Index out of range");
@@ -76,7 +79,7 @@ public:
     }
 
     const T& at(int index) const {
-        if (index >= 0 && index < size) {
+        if (index >= 0 && index < this->size) {
             return this->data[index];
         } else {
             throw std::out_of_range("Index out of range");
@@ -84,10 +87,10 @@ public:
     }
 
     void reserve(int newCapacity) {
-        if (newCapacity > capacity) {
+        if (newCapacity > this->capacity) {
             T* newData = new T[newCapacity];
-            for (int i = 0; i < size; i++) {
-                newData[i] = data[i];
+            for (int i = 0; i < this->size; i++) {
+                newData[i] = this->data[i];
             }
             delete[] this->data;
             this->data = newData;
@@ -96,38 +99,48 @@ public:
     }
 
     void resize(int newSize, T value) {
-        if (newSize > size) {
+        if (newSize > this->size) {
+            T *newData = new T[newSize];
+            for (int i = 0; i < this->size; i++) {
+                newData[i] = this->data[i];
+            }
+            delete[] this->data;
+            this->data = newData;
+            this->capacity = newSize;
+        }
+        else if (newSize < this->size) {
             T* newData = new T[newSize];
-            for (int i = 0; i < size; i++) {
-                newData[i] = data[i];
+            for (int i = 0; i < newSize; i++) {
+                newData[i] = this->data[i];
             }
             delete[] this->data;
             this->data = newData;
             this->size = newSize;
             this->capacity = newSize;
-        } else if (newSize < size) {
-            delete[] this->data;
-            this->data = new T[newSize];
-            this->size = newSize;
-            this->capacity = newSize;
         }
-        for (int i = 0; i < newSize; i++) {
-            this->data[i] = value;
-        }
+    //if equal, nothing happens
     }
 
     void push_back(const T& value) {
         if (size == capacity) {
-            reserve(capacity * 2);
+            //+1 fixes error with startsize = 0
+            reserve((capacity * 2) +1);
         }
         this->data[size] = value;
         size++;
     }
 
+    void print() {
+        cout << "Size: " << this->size << " / Capacity: " << this->capacity << endl;
+        for (int i = 0; i < this->size; i++) {
+            cout << data[i] << endl;
+        }
+    }
+
 private:
-    int size{};
-    int capacity{};
-    T* data{};
+    int size;
+    int capacity;
+    T* data;
 };
 
 #endif
