@@ -12,11 +12,14 @@ class parkhaus {
 public:
     parkhaus();
     void print();
-    bool belegen();
-    bool dauerparkplatz_belegen();
+    unsigned int belegen();
+    unsigned int dauerparkplatz_belegen(const string& name);
+    bool dauerparkplatz_freigeben(const string& name);
+    bool dauerparkplatz_freigeben(unsigned int id);
+    bool freigeben(unsigned int id);
 
 private:
-    myArray<parkplatz, 10> a;
+    myArray<parkplatz*, 10> a;
 
 };
 

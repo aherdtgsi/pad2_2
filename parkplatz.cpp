@@ -2,6 +2,7 @@
 // Created by Andi on 24.11.2021.
 //
 
+#include <stdexcept>
 #include "parkplatz.h"
 
 parkplatz::parkplatz(unsigned int id) {
@@ -48,19 +49,48 @@ void parkplatz::setName(const string &name) {
 }
 
 void parkplatz::belegen() {
-    this->setIstBelegt(true);
+    if (ist_belegt) {
+        throw std::logic_error {"Parkplatz bereits belegt"};
+    }
+    if (ist_dauerparkplatz) {
+        throw std::logic_error {"Parkplatz ist Dauerparkplatz"};
+    }
+    ist_belegt = true;
 }
+
 
 void parkplatz::freigeben() {
-    this->setIstBelegt(false);
+    if (!ist_belegt) {
+        throw std::logic_error {"Parkplatz nicht belegt"};
+    }
+    if (ist_dauerparkplatz) {
+        throw std::logic_error {"Parkplatz ist Dauerparkplatz"};
+    }
+    ist_belegt = false;
 }
 
-void parkplatz::dauerparkplatz_belegen(string name) {
-    this->setIstBelegt(true);
-    this->setName(name);
+
+void parkplatz::dauerparkplatz_belegen(string parkplatz_name) {
+    if (ist_belegt) {
+        throw std::logic_error {"Parkplatz bereits belegt"};
+    }
+    if (!ist_dauerparkplatz) {
+        throw std::logic_error {"Parkplatz ist kein Dauerparkplatz"};
+    }
+    ist_belegt = true;
+    ist_dauerparkplatz = true;
+    this->name = std::move(parkplatz_name);
 }
+
 
 void parkplatz::dauerparkplatz_freigeben() {
-    this->setIstBelegt(false);
-    this->setName("");
+    if (!ist_belegt) {
+        throw std::logic_error {"Parkplatz nicht belegt"};
+    }
+    if (!ist_dauerparkplatz) {
+        throw std::logic_error {"Parkplatz ist kein Dauerparkplatz"};
+    }
+    ist_belegt = false;
+    ist_dauerparkplatz = false;
+    name = "";
 }

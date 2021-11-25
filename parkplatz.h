@@ -6,14 +6,14 @@
 #define UNTITLED1_PARKPLATZ_H
 #include "string"
 using std::string;
-
+using std::exception;
 
 class parkplatz {
 public:
     parkplatz(unsigned int id);
     void belegen();
     void freigeben();
-    void dauerparkplatz_belegen(string name);
+    void dauerparkplatz_belegen(string parkplatz_name);
     void dauerparkplatz_freigeben();
     bool isIstBelegt() const;
     void setIstBelegt(bool istBelegt);
