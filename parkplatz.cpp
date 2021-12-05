@@ -14,7 +14,6 @@ parkplatz::parkplatz(unsigned int id) {
     this->setIstBelegt(false);
     this->setId(id);
     this->setName("");
-
 }
 
 bool parkplatz::isIstBelegt() const {
@@ -79,7 +78,6 @@ void parkplatz::dauerparkplatz_belegen(string parkplatz_name) {
         throw std::logic_error {"Parkplatz ist kein Dauerparkplatz"};
     }
     ist_belegt = true;
-    ist_dauerparkplatz = true;
     this->name = std::move(parkplatz_name);
 }
 
@@ -92,6 +90,5 @@ void parkplatz::dauerparkplatz_freigeben() {
         throw std::logic_error {"Parkplatz ist kein Dauerparkplatz"};
     }
     ist_belegt = false;
-    ist_dauerparkplatz = false;
     name = "";
 }
