@@ -16,6 +16,7 @@ private:
     point p1, p2;
 public:
     line();
+    line(point p1, point p2);
     line(unsigned int x1,unsigned int y1 ,unsigned int x2,unsigned int y2);
     void set_line(unsigned int x1,unsigned int y1 ,unsigned int x2,unsigned int y2);
     void draw(frame* fr);

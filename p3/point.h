@@ -11,6 +11,11 @@ class point {
 private:
     unsigned int x, y;
 public:
+    unsigned int getX() const;
+
+    unsigned int getY() const;
+
+public:
     point();
     point(unsigned int x,unsigned int y);
     void set_position(unsigned int x,unsigned int y);
