@@ -54,7 +54,7 @@ public:
         return this->capacity;
     }
 
-    T& operator[](int index) {
+    virtual T& operator[](int index) {
         if (index >= 0 && index < this->size) {
             return this->data[index];
         } else {
@@ -62,7 +62,7 @@ public:
         }
     }
 
-    T& at(int index) {
+    virtual T& at(int index) {
         if (index >= 0 && index < this->size) {
             return this->data[index];
         } else {
@@ -70,7 +70,7 @@ public:
         }
     }
 
-    const T& operator[](int index) const {
+    virtual const T& operator[](int index) const {
         if (index >= 0 && index < this->size) {
             return this->data[index];
         } else {
@@ -78,7 +78,7 @@ public:
         }
     }
 
-    const T& at(int index) const {
+    virtual const T& at(int index) const {
         if (index >= 0 && index < this->size) {
             return this->data[index];
         } else {
