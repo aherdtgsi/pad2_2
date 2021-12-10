@@ -14,7 +14,7 @@ using std::endl;
 class frame {
     private:
         static const int wide{54}; // globale Konstante: 55 Zeichen pro Zeile
-        static const int high{34}; // globale Konstante: 34 Zeilen pro Frame
+        static const int high{51}; // globale Konstante: 34 Zeilen pro Frame
         std::array<std::array<char,wide>, high > frm;
     public:
         enum color { black = ' ', white = '*' };

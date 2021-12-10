@@ -26,6 +26,7 @@ void line::draw(frame *fr) {
         int y2 = p2.getY();
         int dx = x2 - x1;
         int dy = y2 - y1;
+        //direction
         int sx = (dx > 0) ? 1 : -1;
         int sy = (dy > 0) ? 1 : -1;
         dx = std::abs(dx);
@@ -54,3 +55,4 @@ line::line(point p1, point p2) {
     this-> p1 = p1;
     this-> p2 = p2;
 }
+

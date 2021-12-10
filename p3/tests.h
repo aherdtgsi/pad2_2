@@ -19,7 +19,7 @@ void a1(){
     test.put_point(1,1);
     test.show();
     system("pause");
-    test.put_point(54,1);
+    test.put_point(10,1);
     test.show();
     system("pause");
     for(int x=0;x<frame::getHigh();x++){
@@ -42,6 +42,9 @@ void a1_2(){
     ln.set_line(50,1,1,30);
     //draw line in frame
     ln.draw(&test);
+    //out of range
+    //ln.set_line(100,1,1,30);
+    //ln.draw(&test);
     //show frame
     test.show();
 }
@@ -65,7 +68,7 @@ void a2_1(){
 void a2_2(){
     frame test = frame();
     point p1 = point(1,30);
-    triangle t = triangle(p1,10,3,3);
+    triangle t = triangle(p1,20,16,3);
     t.draw(&test);
     test.show();
 }
@@ -105,10 +108,10 @@ void a3_2(){
 template<class T>
 void tf_at( const myRangeVec<T>& rcmv, myRangeVec<T>& rmv ) {
     //rcmv[1] = 4.2; // Fehler, wie es auch sein soll
-    T d1 { rcmv.at(1) }; // die const-Version []
+    //T d1 { rcmv.at(1) }; // die const-Version []
     //rmv[1] = 0.7; // die nicht-const-Version []
-    T d2 { rmv.at(1) }; // die nicht-const-Version []
-    cout << d1 << d2 << endl;
+    //T d2 { rmv.at(1) }; // die nicht-const-Version []
+    //cout << d1 << d2 << endl;
 }
 
 void a3_3(){

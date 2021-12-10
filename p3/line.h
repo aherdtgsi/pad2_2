@@ -14,6 +14,7 @@ using std::endl;
 class line {
 private:
     point p1, p2;
+
 public:
     line();
     line(point p1, point p2);

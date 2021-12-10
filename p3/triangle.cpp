@@ -51,3 +51,4 @@ triangle::triangle(point p1, unsigned int len1,unsigned int len2,unsigned int le
     lines.push_back(l);
 
 }
+
