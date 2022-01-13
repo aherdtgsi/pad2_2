@@ -31,7 +31,6 @@ public:
     void print();
     void printBackward ();
     long int getSize ();
-
     myNode <Elem>* ins ( const Elem&, myNode<Elem>* ); // vor Knoten p einfuegen // Rueckgabe: Adresse des neuen Knotens
     myNode <Elem>* rem ( myNode <Elem>* ); // Knoten p loeschen // Rueckgabe: Adresse des Knotens nach p
     void push_front( const Elem& ); // neuen Knoten am Anfang einfuegen

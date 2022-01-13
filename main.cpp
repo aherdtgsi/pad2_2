@@ -7,7 +7,7 @@
 #include "p4/p4_tests.h"
 
 int main() try {
-    p4_aufgabe2();
+    p4_aufgabe2_B();
 }
 catch (exception &e) {
     cerr << "Exception: " << e.what() << "\n";
