@@ -19,12 +19,12 @@ void p5_aufgabe1(){
     bt.insert('r');
     bt.insert('s');
     bt.insert('t');
-    bt.insert('u');
-    bt.insert('v');
-    bt.insert('w');
     bt.insert('x');
     bt.insert('y');
     bt.insert('z');
+    bt.insert('u');
+    bt.insert('v');
+    bt.insert('w');
     bt.insert('a');
     bt.insert('b');
     bt.insert('c');
@@ -35,7 +35,6 @@ void p5_aufgabe1(){
     bt.insert('h');
     bt.insert('i');
     bt.insert('j');
-    bt.insert('k');
     bt.insert('l');
     bt.insert('m');
     bt.insert('n');
@@ -50,12 +49,66 @@ void p5_aufgabe1(){
     print_test_result(7, check_char('z', bt.find('z')->value), "checking find method3");
     print_test_result(8, check_int(4, bt.find('a')->count), "checking find method(count)1");
     print_test_result(9, check_int(1, bt.find('b')->count), "checking find method(count)2");
-    print_test_result(10, check_int(26, bt.size()), "checking size of tree");
+    print_test_result(10, check_int(25, bt.size()), "checking size of tree");
     print_test_result(11, check_int(bt.size(), bt.countNodes(bt.find('p'))), "checking size of subtree from root = size()");
-    print_test_result(12, check_int(15, bt.countNodes(bt.getRoot()->left)), "checking size of subtree from spot1 (root-> left)");
+    print_test_result(12, check_int(14, bt.countNodes(bt.getRoot()->left)), "checking size of subtree from spot1 (root-> left)");
     print_test_result(13, check_int(0, bt.countNodes(bt.getRoot()->left->left)), "checking size of subtree from spot1 (root-> left->left)");
 
+    cout << "TEST: Some rotations around root" << endl;
+    bt.level_order();
+    bt.rotate_right(bt.getRoot());
+    bt.level_order();
+    bt.rotate_right(bt.getRoot());
+    bt.level_order();
+    bt.rotate_right(bt.getRoot());
+    bt.level_order();
+    bt.rotate_left(bt.getRoot());
+    bt.level_order();
+    bt.rotate_left(bt.getRoot());
+    bt.level_order();
+    bt.rotate_left(bt.getRoot());
+    bt.level_order();
+    bt.rotate_left(bt.getRoot());
+    bt.level_order();
+    bt.rotate_left(bt.getRoot());
+    bt.level_order();
+    bt.rotate_left(bt.getRoot());
+    bt.level_order();
+    bt.rotate_left(bt.getRoot());
+    bt.level_order();
+    bt.rotate_left(bt.getRoot());
+    bt.level_order();
+    bt.rotate_left(bt.getRoot());
+    bt.level_order();
+    bt.rotate_left(bt.getRoot());
+    bt.level_order();
+    bt.rotate_left(bt.getRoot());
+    bt.level_order();
 
+    cout << "TEST: Some rotations around other nodes" << endl;
+    bt.rotate_left(bt.find('a'));
+    bt.level_order();
+    bt.rotate_left(bt.find('a'));
+    bt.level_order();
+    bt.rotate_left(bt.find('a'));
+    bt.level_order();
+    bt.rotate_right(bt.find('a'));
+    bt.level_order();
+    bt.rotate_right(bt.find('a'));
+    bt.level_order();
+    bt.rotate_right(bt.find('a'));
+    bt.level_order();
+    bt.rotate_right(bt.find('b'));
+    bt.level_order();
+    bt.rotate_left(bt.find('b'));
+    bt.level_order();
+
+    bt.insert_as_root('k');
+    print_test_result(14, check_char('k', bt.getRoot()->value), "inserting k as root, checking if k is root");
+
+    bt.insert_as_root('a');
+    print_test_result(15, check_char('a', bt.getRoot()->value), "inserting a as root, checking if a is root");
+    print_test_result(16, check_int(5, bt.getRoot()->count), "inserting k as root, checking if a counter has increased");
 
 }
 

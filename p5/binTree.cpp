@@ -41,6 +41,7 @@ BinTree::Node *BinTree::insert(const char &val) {
         else if (p->value > val) {
             if (p->left == nullptr) {
                 p->left = newNode;
+                newNode->pre = p;
                 sz++;
                 return newNode;
             }
@@ -49,6 +50,7 @@ BinTree::Node *BinTree::insert(const char &val) {
         else {
             if (p->right == nullptr) {
                 p->right = newNode;
+                newNode->pre = p;
                 sz++;
                 return newNode;
             }
@@ -115,4 +117,89 @@ int BinTree::countNodes(Node* rootNode) {
 
 BinTree::Node *BinTree::getRoot() const {
     return root;
+}
+
+
+
+void BinTree::rotate_right(Node* node) {
+    if(node == nullptr)
+        return;
+    Node* p = node;
+    Node* q = p->left;
+    if(q== nullptr){
+        std::cout << "cannot rotate_right(), no left node"<< std::endl;
+        return;
+    }
+    p->left = q->right;
+    q->right = p;
+    if(p->left!= nullptr){
+        p->left->pre = p;
+    }
+    if(p->pre!= nullptr){
+        if(p->pre->right==p){
+            p->pre->right = q;
+        } else if(p->pre->left==p){
+            p->pre->left = q;
+        }
+        q->pre = p->pre;
+    }
+    else{
+        root = q;
+        q->pre= nullptr;
+    }
+    p->pre=q;
+
+}
+
+
+void BinTree::rotate_left(Node* node) {
+    if(node == nullptr)
+        return;
+    Node* p = node;
+    Node* q = p->right;
+    if(q== nullptr){
+        std::cout << "cannot rotate_left(), no right node"<< std::endl;
+        return;
+    }
+    p->right = q->left;
+    q->left = p;
+    if(p->right!= nullptr){
+        p->right->pre = p;
+    }
+    if(p->pre!= nullptr){
+        if(p->pre->right==p){
+            p->pre->right = q;
+        } else if(p->pre->left==p){
+            p->pre->left = q;
+        }
+        q->pre = p->pre;
+    }
+    else{
+        root = q;
+        q->pre = nullptr;
+    }
+    p->pre=q;
+}
+
+
+
+
+BinTree::Node *BinTree::insert_as_root(const char &val) {
+    Node* newNode = insert(val);
+    make_node_root(newNode);
+}
+
+void BinTree::make_node_root(BinTree::Node *node) {
+    if(node == nullptr){
+        return;
+    }
+    level_order();
+    while (node!=root){
+        level_order();
+        if(node->pre->left==node){
+            rotate_right(node->pre);
+        } else if(node->pre->right==node){
+            rotate_left(node->pre);
+        }
+    }
 }

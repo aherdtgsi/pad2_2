@@ -11,9 +11,10 @@ public:
     {
         char value;
         int count;
+        Node* pre;
         Node* left;
         Node* right;
-        explicit Node( char ch) : value{ch}, count(1), left{nullptr}, right{nullptr} {}
+        explicit Node( char ch) : value{ch}, pre{nullptr}, count(1), left{nullptr}, right{nullptr} {}
     };
     BinTree() : root{nullptr}, sz{0} {}
     ~BinTree();
@@ -22,8 +23,13 @@ public:
     Node* insert( const char& val );
     void in_order();
     void level_order();
-    //Methods that counts number of nodes in subtree
     int countNodes(Node* rootNode);
+    Node* insert_as_root( const char& val );
+
+    //helper
+    void rotate_right(Node* node);
+    void rotate_left(Node* node);
+    void make_node_root(Node* node);
 
 private:
     Node* root;
