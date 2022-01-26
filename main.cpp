@@ -5,9 +5,11 @@
 
 #include "p4/mylist.hpp"
 #include "p4/p4_tests.h"
+#include "p5/tests.h"
+
 
 int main() try {
-    p4_aufgabe2_B();
+    p5_aufgabe1();
 }
 catch (exception &e) {
     cerr << "Exception: " << e.what() << "\n";
