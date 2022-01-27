@@ -9,7 +9,7 @@
 
 
 int main() try {
-    p5_aufgabe1();
+    p5_aufgabe2();
 }
 catch (exception &e) {
     cerr << "Exception: " << e.what() << "\n";

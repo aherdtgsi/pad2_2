@@ -6,6 +6,7 @@ using namespace std;
 #include "iostream"
 #include "functions.h"
 #include "binTree.h"
+#include "vector"
 
 void p5_aufgabe1(){
     print_test_result(1, check_double(1,1,0.01), "testtest1, must be success");
@@ -112,3 +113,31 @@ void p5_aufgabe1(){
 
 }
 
+
+void p5_aufgabe2(){
+    cout << "testvector<int>" << endl;
+    vector<int> v = {1,2,3,4,1,2,3,5,7,2,4,6,5,3,45234,3,2345,234,1};
+    printVector(v);
+    quicksort(v, 0, v.size()-1);
+    printVector(v);
+
+    cout << "testvector<double>" << endl;
+    vector<double> v2 = {1.32,2.2342,3.9,4,1,2,3,5,7,2,4,6,5,3,45234,3,2345,234.1,1};
+    printVector(v2);
+    quicksort(v2, 0, v2.size()-1);
+    printVector(v2);
+
+    cout << "testvector<int> mit 1 element" << endl;
+    vector<int> v3 = {1};
+    printVector(v3);
+    quicksort(v3, 0, v3.size()-1);
+    printVector(v3);
+
+
+    cout << "testvector<int> leer" << endl;
+    vector<int> v4 = {};
+    printVector(v4);
+    quicksort(v4, 0, v3.size()-1);
+    printVector(v4);
+
+}
